@@ -90,14 +90,13 @@
   transform: scale(1.1);
 }
 
-/* Add a Google Font for better typography */
+
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap");
 
 body {
   font-family: "Poppins", sans-serif;
 }
 
-/* Responsive adjustments */
 @media (max-width: 767.98px) {
   .login-card {
     margin: 0 15px;

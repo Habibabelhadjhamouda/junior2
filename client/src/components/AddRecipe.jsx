@@ -23,7 +23,7 @@ function AddRecipe({ fetchRecipes, categories }) {
         const formData = new FormData()
         formData.append("file", file)
         formData.append("upload_preset", "myjunior_clodinary") 
-        // formData.append('cloud_name', "drjp6iyha");
+      
 
         try {
             setUploading(true)

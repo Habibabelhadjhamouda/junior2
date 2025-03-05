@@ -35,7 +35,7 @@ function MainPage({ recipes, deleteRecipe, fetchRecipes }) {
       })
     }
 
-    // Filter by category if one is selected
+ 
     if (selectedCategory !== "All Categories") {
       filtered = filtered.filter(recipe => recipe.category === selectedCategory)
     }
@@ -49,7 +49,7 @@ function MainPage({ recipes, deleteRecipe, fetchRecipes }) {
 
   useEffect(() => {
     handleSearch()
-  }, [query, selectedCategory]) // Run search when query or category changes
+  }, [query, selectedCategory]) 
 
   useEffect(() => {
     fetchCategories()
@@ -57,12 +57,12 @@ function MainPage({ recipes, deleteRecipe, fetchRecipes }) {
 
   const fetchCategories = async () => {
     try {
-      // Add authorization header with token
+   
       const token = localStorage.getItem('token')
       const response = await axios.get("http://localhost:4000/api/categories", {
         headers: { Authorization: `Bearer ${token}` }
       })
-      console.log("Categories fetched:", response.data) // Debug log
+      console.log("Categories fetched:", response.data) 
       setCategories(response.data)
     } catch (error) {
       console.error("Error fetching categories:", error)

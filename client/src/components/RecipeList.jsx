@@ -3,6 +3,7 @@ import { Edit, Trash2, Eye } from "lucide-react"
 import "./styles.css"
 
 function RecipeList({ recipes, handleDelete }) {
+  console.log("resiiiii",recipes)
   const navigate = useNavigate()
 
   if (!recipes || recipes.length === 0) {

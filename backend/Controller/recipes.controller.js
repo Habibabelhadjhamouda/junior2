@@ -53,14 +53,12 @@ module.exports = {
     deleteRecipe: async (req, res) => {
         try {
             const { id } = req.params
-            const UserId = req.user 
-
+            // const UserId = req.user 
+            // console.log(userId)
            
             const recipe = await Recipe.findOne({
                 where: { 
-                    id,
-                    UserId 
-                }
+                    id                }
             })
 
             if (!recipe) {
@@ -78,16 +76,16 @@ module.exports = {
     updateRecipe: async (req, res) => {
       
             const { title, description, ingredients, instructions, cookingTime, prepTime, servings, image, isFavorite } = req.body;
-const userId = req.body.UserId;
+// const userId = req.body.UserId;
 const recipeId = req.params.id || req.body.id; 
 
-if (!userId || !recipeId) {
+if (!recipeId) {
   return res.status(400).json({ error: "UserId or RecipeId is missing" });
 }
 
 try {
   const recipe = await Recipe.findOne({
-    where: { id: recipeId, UserId: userId }
+    where: { id: recipeId}
   });
 
   if (!recipe) {
@@ -103,7 +101,6 @@ try {
     prepTime,
     servings,
     image,
-    isFavorite
   });
 
   res.status(200).json({ message: "Recipe updated successfully", recipe });
@@ -137,46 +134,46 @@ try {
         }
     },
 
-    toggleFavorite: async (req, res) => {
-        try {
-            const { id } = req.params
-            const UserId = req.user
+    // toggleFavorite: async (req, res) => {
+    //     try {
+    //         const { id } = req.params
+    //         const UserId = req.user
 
-            const recipe = await Recipe.findOne({
-                where: { id }
-            })
+    //         const recipe = await Recipe.findOne({
+    //             where: { id }
+    //         })
 
-            if (!recipe) {
-                return res.status(404).send({ message: "Recipe not found" })
-            }
+    //         if (!recipe) {
+    //             return res.status(404).send({ message: "Recipe not found" })
+    //         }
 
-            recipe.isFavorite = !recipe.isFavorite
-            await recipe.save()
+    //         recipe.isFavorite = !recipe.isFavorite
+    //         await recipe.save()
 
-            res.status(200).send(recipe)
-        } catch (error) {
-            console.error("Error toggling favorite:", error)
-            res.status(500).send({ message: "Error toggling favorite" })
-        }
-    },
+    //         res.status(200).send(recipe)
+    //     } catch (error) {
+    //         console.error("Error toggling favorite:", error)
+    //         res.status(500).send({ message: "Error toggling favorite" })
+    //     }
+    // },
 
-    getFavorites: async (req, res) => {
-        try {
-            const UserId = req.user
-            const favorites = await Recipe.findAll({
-                where: { 
-                    UserId,
-                    isFavorite: true 
-                },
-                include: [{
-                    model: User,
-                    attributes: ['name']
-                }]
-            })
-            res.status(200).send(favorites)
-        } catch (error) {
-            console.error("Error getting favorites:", error)
-            res.status(500).send({ message: "Error getting favorites" })
-        }
-    }
+    // getFavorites: async (req, res) => {
+    //     try {
+    //         const UserId = req.user
+    //         const favorites = await Recipe.findAll({
+    //             where: { 
+    //                 UserId,
+    //                 isFavorite: true 
+    //             },
+    //             include: [{
+    //                 model: User,
+    //                 attributes: ['name']
+    //             }]
+    //         })
+    //         res.status(200).send(favorites)
+    //     } catch (error) {
+    //         console.error("Error getting favorites:", error)
+    //         res.status(500).send({ message: "Error getting favorites" })
+    //     }
+    // }
 } 

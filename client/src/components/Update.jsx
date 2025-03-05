@@ -53,16 +53,16 @@ function EditRecipe({ categories = [] }) {
         setRecipe((prevRecipe) => ({
             ...prevRecipe,
             [name]: value
-        }));
-    };
+        }))
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const token = localStorage.getItem('token');
         try {
             await axios.put(`http://localhost:4000/api/recipe/update/${id}`, recipe, {
-                headers: { Authorization: `Bearer ${token}` }
+                // headers: { Authorization: `Bearer ${token}` }
             });
+            console.log("recippppppppppppppp",recipe)
             navigate('/main');
         } catch (error) {
             console.error('Error updating recipe:', error);
@@ -176,7 +176,7 @@ function EditRecipe({ categories = [] }) {
                     </select>
                 </div>
 
-                <button type="submit" className="btn btn-primary">Update Recipe</button>
+                <button type="submit" className="btn btn-primary" >Update Recipe</button>
             </form>
         </div>
     );

@@ -29,7 +29,7 @@
     min-height: 100vh;
   }
   
-  /* Navbar styles */
+
   .navbar {
     background-color: var(--card-background);
     box-shadow: var(--shadow);
@@ -101,7 +101,7 @@
     width: 100%;
   }
   
-  /* Search styles */
+ 
   .navbar-search {
     flex: 0 0 30%;
   }
@@ -144,7 +144,7 @@
     background-color: #ff5252;
   }
   
-  /* Profile styles */
+ 
   .profile-container {
     position: relative;
   }
@@ -256,7 +256,7 @@
     margin: 0.5rem 0;
   }
   
-  /* Main content styles */
+  
   .main-content {
     max-width: 1200px;
     margin: 2rem auto;
@@ -293,7 +293,7 @@
     box-shadow: var(--shadow);
   }
   
-  /* Recipe cards grid layout */
+
   .recipes-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -454,7 +454,7 @@
     }
   }
   
-  /* Add these styles for the Category component */
+
   
   .categories-container {
     background-color: var(--card-background);
